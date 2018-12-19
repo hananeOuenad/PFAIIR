@@ -1,0 +1,4 @@
+FROM openjdk:8
+ADD target/test-docker-sb.jar test-docker-sb.jar
+EXPOSE 8085
+ENTRYPOINT ["java","-jar","test-docker-sb.jar"]

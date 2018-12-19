@@ -1,0 +1,207 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Spring Boot Thymeleaf Hello World Example</title>
+<meta charset="utf-8" />
+<title>Adminox - Responsive Web App Kit</title>
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta
+	content="A fully featured admin theme which can be used to build CRM, CMS, etc."
+	name="description" />
+<meta content="Coderthemes" name="author" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+<!-- App favicon -->
+<link rel="shortcut icon" href="../../assets/images/favicon.ico">
+
+<!-- App css -->
+<link th:href="@{/assets/css/bootstrap.min.css}"
+	href="../../assets/css/bootstrap.min.css" rel="stylesheet"
+	type="text/css" />
+<link th:href="@{/assets/css/core.css}" href="../../assets/css/core.css"
+	rel="stylesheet" type="text/css" />
+<link th:href="@{/assets/css/components.css}"
+	href="../../assets/css/components.css" rel="stylesheet" type="text/css" />
+<link th:href="@{/assets/css/icons.css}"
+	href="../../assets/css/icons.css" rel="stylesheet" type="text/css" />
+<link th:href="@{/assets/css/pages.css}"
+	href="../../assets/css/pages.css" rel="stylesheet" type="text/css" />
+<link th:href="@{/assets/css/menu.css}" href="../../assets/css/menu.css"
+	rel="stylesheet" type="text/css" />
+<link th:href="@{/assets/css/responsive.css}"
+	href="../../assets/css/responsive.css" rel="stylesheet" type="text/css" />
+
+<script src="../../assets/js/modernizr.min.js"></script>
+
+</head>
+
+
+<body>
+
+	<!-- Begin page -->
+	<div id="wrapper">
+
+		<!-- Top Bar Start -->
+		<div class="topbar">
+
+			<!-- LOGO -->
+			<div class="topbar-left">
+				<!--<a href="index.html" class="logo"><span>Code<span>Fox</span></span><i class="mdi mdi-layers"></i></a>-->
+				<!-- Image logo -->
+				<a href="index.html" class="logo"> <span> <img
+						src="../../assets/images/logo.png" alt="" height="25">
+				</span> <i> <img src="../../assets/images/logo_sm.png" alt=""
+						height="28">
+				</i>
+				</a>
+			</div>
+			<!-- end navbar -->
+		</div>
+		<!-- Top Bar End -->
+
+
+		<!-- ========== Left Sidebar Start ========== -->
+		<div class="left side-menu">
+			<div class="slimscroll-menu" id="remove-scroll">
+
+				<!--- Sidemenu -->
+				<div id="sidebar-menu">
+					<!-- Left Menu Start -->
+					<ul class="metisMenu nav" id="side-menu">
+						<li class="menu-title">Navigation</li>
+						<li><a href="javascript: void(0);" aria-expanded="true"><i
+								class="fi-air-play"></i> <span>
+									Vehicule </span></a>
+							</li>
+
+						
+
+					</ul>
+
+				</div>
+				<!-- Sidebar -->
+				<div class="clearfix"></div>
+
+			</div>
+			<!-- Sidebar -left -->
+
+		</div>
+		<!-- Left Sidebar End -->
+
+
+
+		<!-- ============================================================== -->
+		<!-- Start right Content here -->
+		<!-- ============================================================== -->
+		<div class="content-page">
+			<!-- Start content -->
+			<div class="content">
+				<div class="container">
+
+					<div class="row">
+						<div class="col-xs-12">
+							<div class="page-title-box">
+								<h4 class="page-title">Basic Inputs</h4>
+								<ol class="breadcrumb p-0 m-0">
+									<li><a href="#">Adminox</a></li>
+									<li><a href="#">Forms</a></li>
+									<li class="active">Form elements</li>
+								</ol>
+								<div class="clearfix"></div>
+							</div>
+						</div>
+					</div>
+					<!-- end row -->
+
+					
+
+
+					
+					<!-- end row -->
+
+
+					<div class="row">
+						<div class="col-md-12">
+							<div class="card-box">
+								<h4 class="m-t-0 header-title">
+									<b>Ajout Vehicule</b>
+								</h4>
+								<div class="p-20">
+									<form th:action="@{/ModifierVehicule}" method="post" th:object="${vehicule}">
+
+							<div class="body">
+								<div class="row clearfix">
+									<div class="col-sm-6">
+										<div class="form-group">
+											<div class="form-line">
+												<input type="text" class="form-control" th:value="${vehicule.matricule}" th:field ="*{matricule}" placeholder="Matricole" />
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="form-group">
+											<div class="form-line">
+												<input type="text" class="form-control" th:value="${vehicule.marque}" th:field ="*{marque}" placeholder="Marque" />
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row clearfix">
+									<div class="col-sm-6">
+										<div class="form-group">
+											<div class="form-line">
+												<input type="text" class="form-control" th:value="${vehicule.genre}" th:field ="*{genre}" placeholder="Genre" />
+											</div>
+										</div>
+									</div>
+									
+									<div class="col-sm-12">
+										<button type="submit" class="btn btn-raised g-bg-cyan">Submit</button>
+										<button type="submit" class="btn btn-raised">Cancel</button>
+									</div>
+						</form>
+									
+								</div>
+							</div>
+							<!-- end card-box -->
+						</div>
+						<!-- end col -->
+					</div>
+					<!-- end row -->
+
+				</div>
+				<!-- container -->
+
+			</div>
+			<!-- content -->
+
+			<footer class="footer text-right"> 2017 © Adminox. -
+				Coderthemes.com </footer>
+
+		</div>
+
+
+		<!-- ============================================================== -->
+		<!-- End Right content here -->
+		<!-- ============================================================== -->
+
+
+	</div>
+	<!-- END wrapper -->
+
+
+
+	<!-- jQuery  -->
+	<script src="../../assets/js/jquery.min.js"></script>
+	<script src="../../assets/js/bootstrap.min.js"></script>
+	<script src="../../assets/js/metisMenu.min.js"></script>
+	<script src="../../assets/js/waves.js"></script>
+	<script src="../../assets/js/jquery.slimscroll.js"></script>
+
+	<!-- App js -->
+	<script src="../../assets/js/jquery.core.js"></script>
+	<script src="../../assets/js/jquery.app.js"></script>
+
+</body>
+</html>

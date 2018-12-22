@@ -18,6 +18,7 @@ import com.gfa.entities.Vehicule;
 
 
 @Controller
+@RequestMapping(value="/Vehicule")
 public class AjoutVehiculeControlleur {
 
 	// inject via application.properties
@@ -25,7 +26,7 @@ public class AjoutVehiculeControlleur {
 private VehiculeRepository vr;
 	private EntretientPrevertifRepository en;
 
-	@RequestMapping(value="/" , method=RequestMethod.GET)
+	@RequestMapping(value="/list" , method=RequestMethod.GET)
 	public String Index(Model model) {
 		List<Vehicule>vehicules=vr.findAll();
 		model.addAttribute("vehicule", vehicules);
@@ -39,21 +40,8 @@ private VehiculeRepository vr;
 		
 		return "AjoutVehicule";
 	}
-	@RequestMapping(value="/AjoutEntretient" , method=RequestMethod.GET)
-	public String AjoutEntretient(Model model) {
-		model.addAttribute("entretientPrevertif", new EntretientPrevertif());
-		List<Vehicule>vehicules=vr.findAll();
-		model.addAttribute("vehicule", vehicules);
-		return "AjoutEntretient";
-	}
-	@RequestMapping(value="/SaveVehicule" , method=RequestMethod.POST)
-	public String save(Vehicule v, Model model) {
-     vr.save(v);		
-List<Vehicule>vehicules=vr.findAll();
-model.addAttribute("vehicule", vehicules);
-		return "ListVehicule";
-	}
-	
+	 
+	 
 	/*@RequestMapping(value="/SaveEntretient" , method=RequestMethod.POST)
 	public String saveEntretient(EntretientPrevertif v, Model model) {
 		
@@ -63,14 +51,7 @@ model.addAttribute("vehicule", vehicules);
 		return "AjoutEntretient";
 	}*/
 	
-	@RequestMapping(value="/SaveEntretient" , method=RequestMethod.POST)
-	public String saveEntretient(EntretientPrevertif v, Model model) {
-		
-		
-		System.out.println(v.getId()+" "+v.getTitreEntretient()+" "+v.getCompteurHoraire()+" "+v.getTypeCompteur()+" "+v.getVehicule().getId());
-   
-		return "AjoutEntretient";}
-	
+	 
 	@RequestMapping(value="/ModifierVehicule" , method=RequestMethod.POST)
 	public String modifier(Vehicule v, Model model) {
      		vr.saveAndFlush(v);

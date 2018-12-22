@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
 @JsonAutoDetect(fieldVisibility = Visibility.ANY)
 @Entity
@@ -31,6 +32,7 @@ private  String filtreCarburant;
 private float cout;
 private String observation;
 @ManyToOne(fetch=FetchType.LAZY)
+@JsonIgnore
 @JoinColumn(name="code_vehicule") 
 private Vehicule vehicule;
 public Date getDateVidange() {

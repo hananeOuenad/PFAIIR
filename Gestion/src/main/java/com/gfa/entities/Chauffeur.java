@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
 @JsonAutoDetect(fieldVisibility = Visibility.ANY)
 @Entity
@@ -30,7 +31,7 @@ private String email;
 private long tel;
 private String photo;
 @ManyToMany(mappedBy="chauffeurs")
-
+@JsonIgnore
 private Collection<Vehicule>vehicules;
 
 

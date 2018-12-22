@@ -128,21 +128,21 @@
 									<b>Ajout Vehicule</b>
 								</h4>
 								<div class="p-20">
-									<form th:action="@{/Chauffeur/ModifierVehicule}" method="post" th:object="${vehicule}">
+									<form th:action="@{/Chauffeur/ModifierChauffeur}" method="post" th:object="${chauffeur}">
 
 							<div class="body">
 								<div class="row clearfix">
 									<div class="col-sm-6">
 										<div class="form-group">
 											<div class="form-line">
-												<input type="text" class="form-control" th:value="${vehicule.matricule}" th:field ="*{matricule}" placeholder="Matricole" />
+												<input type="text" class="form-control" th:value="${chauffeur.cin}" th:field ="*{cin}" placeholder="CIN" />
 											</div>
 										</div>
 									</div>
 									<div class="col-sm-6">
 										<div class="form-group">
 											<div class="form-line">
-												<input type="text" class="form-control" th:value="${vehicule.marque}" th:field ="*{marque}" placeholder="Marque" />
+												<input type="text" class="form-control" th:value="${chauffeur.nom}" th:field ="*{nom}" placeholder="Nom" />
 											</div>
 										</div>
 									</div>
@@ -151,7 +151,15 @@
 									<div class="col-sm-6">
 										<div class="form-group">
 											<div class="form-line">
-												<input type="text" class="form-control" th:value="${vehicule.genre}" th:field ="*{genre}" placeholder="Genre" />
+												<input type="text" class="form-control" th:value="${chauffeur.prenom}" th:field ="*{prenom}" placeholder="Prenom" />
+											</div>
+										</div>
+									</div>
+									<div class="row clearfix">
+									<div class="col-sm-6">
+										<div class="form-group">
+											<div class="form-line">
+												<input type="text" class="form-control" th:value="${chauffeur.tel}" th:field ="*{tel}" placeholder="Telephone" />
 											</div>
 										</div>
 									</div>

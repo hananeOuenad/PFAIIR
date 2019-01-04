@@ -31,7 +31,6 @@ public class Affectation implements Serializable {
 		super();
 		this.dateAffectation = dateAffectation;
 	}
-//modification3
 	public Affectation() {
 		super();
 		// TODO Auto-generated constructor stub

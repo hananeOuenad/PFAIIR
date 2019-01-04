@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.gfa.dao.EntretientPrevertifRepository;
 import com.gfa.dao.VehiculeRepository;
 import com.gfa.entities.EntretientPrevertif;
 import com.gfa.entities.Vehicule;
@@ -24,7 +23,6 @@ public class AjoutVehiculeControlleur {
 	// inject via application.properties
 	@Autowired
 private VehiculeRepository vr;
-	private EntretientPrevertifRepository en;
 
 	@RequestMapping(value="/list" , method=RequestMethod.GET)
 	public String Index(Model model) {
@@ -52,8 +50,8 @@ private VehiculeRepository vr;
 	}*/
 	
 	 
-	@RequestMapping(value="/ModifierVehicule" , method=RequestMethod.POST)
-	public String modifier(Vehicule v, Model model) {
+	@RequestMapping(value="/SaveVehicule" , method=RequestMethod.POST)
+	public String save(Vehicule v, Model model) {
      		vr.saveAndFlush(v);
 List<Vehicule>vehicules=vr.findAll();
 model.addAttribute("vehicule", vehicules);
@@ -80,5 +78,13 @@ model.addAttribute("vehicule", vehicules);
 	}
 	
 	
+@RequestMapping(value="/AjoutEntretient" , method=RequestMethod.GET)
 	
+	public String AjoutEntretient(Model model) {
+		
+		model.addAttribute("entretientPrevertif", new EntretientPrevertif());
+		List<Vehicule>vehicules= vr.findAll();
+		model.addAttribute("vehicule", vehicules);
+		return "AjoutEntretient";
+	}
 }

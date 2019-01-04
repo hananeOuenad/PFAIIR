@@ -76,6 +76,13 @@ public class EntretientPrevertif implements Serializable  {
 		this.typeCompteur = typeCompteur;
 		this.vehicule4 = vehicule;
 	}
+	public EntretientPrevertif(String titreEntretient, Date dateEntretient, int compteurHoraire, String typeCompteur) {
+		super();
+		this.titreEntretient = titreEntretient;
+		this.dateEntretient = dateEntretient;
+		this.compteurHoraire = compteurHoraire;
+		this.typeCompteur = typeCompteur;
+	}
 	public EntretientPrevertif() {
 		super();
 	}

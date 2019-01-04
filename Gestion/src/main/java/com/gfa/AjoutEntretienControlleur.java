@@ -1,5 +1,6 @@
 package com.gfa;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.gfa.dao.EntretientPrevertifRepository;
 import com.gfa.dao.VehiculeRepository;
@@ -17,29 +19,35 @@ import com.gfa.entities.Vehicule;
 @RequestMapping(value="/Entretien") 
 public class AjoutEntretienControlleur {
 	@Autowired
-	private VehiculeRepository vr;
 	private EntretientPrevertifRepository en;
-	@RequestMapping(value="/liste" , method=RequestMethod.GET)
+	@Autowired
+	private VehiculeRepository vn;
+
+	@RequestMapping(value="/listeEntretien" , method=RequestMethod.GET)
 	
-	public String Index(Model model) {
+	public String Index(Model model, Model model1, Vehicule vvv) {
 		List<EntretientPrevertif>entretients=en.findAll();
-		model.addAttribute("vehicule", entretients);
+
+		for (EntretientPrevertif en : entretients) {
+			vvv=en.getVehicule();
+			
+			model.addAttribute("vehicule", vvv);
+		}
+		model.addAttribute("entretientPrevertif", entretients);
+
 				return "ListeEntretient";
 	}
-	@RequestMapping(value="/AjoutEntretient" , method=RequestMethod.GET)
 	
-	public String AjoutEntretient(Model model) {
-		model.addAttribute("entretientPrevertif", new EntretientPrevertif());
-		List<Vehicule>vehicules=vr.findAll();
-		model.addAttribute("vehicule", vehicules);
-		return "AjoutEntretient";
-	}
 	
 	@RequestMapping(value="/SaveEntretient" , method=RequestMethod.POST)
-	public String saveEntretient(EntretientPrevertif v, Model model) {
+	public String saveEntretient(EntretientPrevertif v, Model model, @RequestParam(name="veh") int veh) {
+ System.out.println("##########################"+veh);
+Vehicule vv=vn.getOne(veh);
+v.setVehicule(vv);
+en.saveAndFlush(v)	;
+
+		model.addAttribute("entretientPrevertif", v);
 		
-		
-		System.out.println(v.getId()+" "+v.getTitreEntretient()+" "+v.getCompteurHoraire()+" "+v.getTypeCompteur()+" "+v.getVehicule().getId());
    
 		return "AjoutEntretient";}
 

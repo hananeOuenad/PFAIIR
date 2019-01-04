@@ -1,207 +1,333 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-<title>Spring Boot Thymeleaf Hello World Example</title>
-<meta charset="utf-8" />
-<title>Adminox - Responsive Web App Kit</title>
-<meta name="viewport"
-	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-<meta
-	content="A fully featured admin theme which can be used to build CRM, CMS, etc."
-	name="description" />
-<meta content="Coderthemes" name="author" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-<!-- App favicon -->
-<link rel="shortcut icon" href="../../assets/images/favicon.ico">
 
-<!-- App css -->
-<link th:href="@{/assets/css/bootstrap.min.css}"
-	href="../../assets/css/bootstrap.min.css" rel="stylesheet"
-	type="text/css" />
-<link th:href="@{/assets/css/core.css}" href="../../assets/css/core.css"
-	rel="stylesheet" type="text/css" />
-<link th:href="@{/assets/css/components.css}"
-	href="../../assets/css/components.css" rel="stylesheet" type="text/css" />
-<link th:href="@{/assets/css/icons.css}"
-	href="../../assets/css/icons.css" rel="stylesheet" type="text/css" />
-<link th:href="@{/assets/css/pages.css}"
-	href="../../assets/css/pages.css" rel="stylesheet" type="text/css" />
-<link th:href="@{/assets/css/menu.css}" href="../../assets/css/menu.css"
-	rel="stylesheet" type="text/css" />
-<link th:href="@{/assets/css/responsive.css}"
-	href="../../assets/css/responsive.css" rel="stylesheet" type="text/css" />
-
-<script src="../../assets/js/modernizr.min.js"></script>
-
+<!-- Mirrored from www.lab.westilian.com/bingo-admin/invoice.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 16 Dec 2018 22:33:31 GMT -->
+<head th:fragment="head">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width"/>
+<title>Gestion flotte automobile</title>
+<link th:href="@{/css/reset.css}" href="../../css/reset.css" rel="stylesheet" type="text/css">
+<link th:href="@{/css/layout.css}" href="../../css/layout.css" rel="stylesheet" type="text/css">
+<link th:href="@{/css/themes.css}" href="../../css/themes.css" rel="stylesheet" type="text/css">
+<link th:href="@{/css/typography.css}" href="../../css/typography.css" rel="stylesheet" type="text/css">
+<link th:href="@{/css/styles.css}" href="../../css/styles.css" rel="stylesheet" type="text/css">
+<link th:href="@{/css/shCore.css}" href="../../css/shCore.css" rel="stylesheet" type="text/css">
+<link th:href="@{/css/bootstrap.css}" href="../../css/bootstrap.css" rel="stylesheet" type="text/css">
+<link th:href="@{/css/jquery.jqplot.css}" href="../../css/jquery.jqplot.css" rel="stylesheet" type="text/css">
+<link th:href="@{/css/jquery-ui-1.8.18.custom.css}" href="../../css/jquery-ui-1.8.18.custom.css" rel="stylesheet" type="text/css">
+<link th:href="@{/css/data-table.css}" href="../../css/data-table.css" rel="stylesheet" type="text/css">
+<link th:href="@{/css/form.css}" href="../../css/form.css" rel="stylesheet" type="text/css">
+<link th:href="@{/css/ui-elements.css}" href="../../css/ui-elements.css" rel="stylesheet" type="text/css">
+<link th:href="@{/css/wizard.css}" href="../../css/wizard.css" rel="stylesheet" type="text/css">
+<link th:href="@{/css/sprite.css}" href="../../css/sprite.css" rel="stylesheet" type="text/css">
+<link th:href="@{/css/gradient.css}" href="../../css/gradient.css" rel="stylesheet" type="text/css">
+<!--[if IE 7]>
+<link th:href="@{/assets/css/bootstrap.min.css}" rel="stylesheet" type="text/css" href="css/ie/ie7.css" />
+<![endif]-->
+<!--[if IE 8]>
+<link th:href="@{/assets/css/bootstrap.min.css}" rel="stylesheet" type="text/css" href="css/ie/ie8.css" />
+<![endif]-->
+<!--[if IE 9]>
+<link th:href="@{/assets/css/bootstrap.min.css}" rel="stylesheet" type="text/css" href="css/ie/ie9.css" />
+<![endif]-->
+<!-- Jquery -->
+<script src="../../js/jquery-1.7.1.min.js"></script>
+<script src="../../js/jquery-ui-1.8.18.custom.min.js"></script>
+<script src="../../js/jquery.ui.touch-punch.js"></script>
+<script src="../../js/chosen.jquery.js"></script>
+<script src="../../js/uniform.jquery.js"></script>
+<script src="../../js/bootstrap-dropdown.js"></script>
+<script src="../../js/bootstrap-colorpicker.js"></script>
+<script src="../../js/sticky.full.js"></script>
+<script src="../../js/jquery.noty.js"></script>
+<script src="../../js/selectToUISlider.jQuery.js"></script>
+<script src="../../js/fg.menu.js"></script>
+<script src="../../js/jquery.tagsinput.js"></script>
+<script src="../../js/jquery.cleditor.js"></script>
+<script src="../../js/jquery.tipsy.js"></script>
+<script src="../../js/jquery.peity.js"></script>
+<script src="../../js/jquery.simplemodal.js"></script>
+<script src="../../js/jquery.jBreadCrumb.1.1.js"></script>
+<script src="../../js/jquery.colorbox-min.js"></script>
+<script src="../../js/jquery.idTabs.min.js"></script>
+<script src="../../js/jquery.multiFieldExtender.min.js"></script>
+<script src="../../js/jquery.confirm.js"></script>
+<script src="../../js/elfinder.min.js"></script>
+<script src="../../js/accordion.jquery.js"></script>
+<script src="../../js/autogrow.jquery.js"></script>
+<script src="../../js/check-all.jquery.js"></script>
+<script src="../../js/data-table.jquery.js"></script>
+<script src="../../js/ZeroClipboard.js"></script>
+<script src="../../js/TableTools.min.js"></script>
+<script src="../../js/jeditable.jquery.js"></script>
+<script src="../../js/duallist.jquery.js"></script>
+<script src="../../js/easing.jquery.js"></script>
+<script src="../../js/full-calendar.jquery.js"></script>
+<script src="../../js/input-limiter.jquery.js"></script>
+<script src="../../js/inputmask.jquery.js"></script>
+<script src="../../js/iphone-style-checkbox.jquery.js"></script>
+<script src="../../js/meta-data.jquery.js"></script>
+<script src="../../js/quicksand.jquery.js"></script>
+<script src="../../js/raty.jquery.js"></script>
+<script src="../../js/smart-wizard.jquery.js"></script>
+<script src="../../js/stepy.jquery.js"></script>
+<script src="../../js/treeview.jquery.js"></script>
+<script src="../../js/ui-accordion.jquery.js"></script>
+<script src="../../js/vaidation.jquery.js"></script>
+<script src="../../js/mosaic.1.0.1.min.js"></script>
+<script src="../../js/jquery.collapse.js"></script>
+<script src="../../js/jquery.cookie.js"></script>
+<script src="../../js/jquery.autocomplete.min.js"></script>
+<script src="../../js/localdata.js"></script>
+<script src="../../js/excanvas.min.js"></script>
+<script src="../../js/jquery.jqplot.min.js"></script>
+<script src="../../js/chart-plugins/jqplot.dateAxisRenderer.min.js"></script>
+<script src="../../js/chart-plugins/jqplot.cursor.min.js"></script>
+<script src="../../js/chart-plugins/jqplot.logAxisRenderer.min.js"></script>
+<script src="../../js/chart-plugins/jqplot.canvasTextRenderer.min.js"></script>
+<script src="../../js/chart-plugins/jqplot.canvasAxisTickRenderer.min.js"></script>
+<script src="../../js/chart-plugins/jqplot.highlighter.min.js"></script>
+<script src="../../js/chart-plugins/jqplot.pieRenderer.min.js"></script>
+<script src="../../js/chart-plugins/jqplot.barRenderer.min.js"></script>
+<script src="../../js/chart-plugins/jqplot.categoryAxisRenderer.min.js"></script>
+<script src="../../js/chart-plugins/jqplot.pointLabels.min.js"></script>
+<script src="../../js/chart-plugins/jqplot.meterGaugeRenderer.min.js"></script>
+<script src="../../js/custom-scripts.js"></script>
 </head>
-
-
-<body>
-
-	<!-- Begin page -->
-	<div id="wrapper">
-
-		<!-- Top Bar Start -->
-		<div class="topbar">
-
-			<!-- LOGO -->
-			<div class="topbar-left">
-				<!--<a href="index.html" class="logo"><span>Code<span>Fox</span></span><i class="mdi mdi-layers"></i></a>-->
-				<!-- Image logo -->
-				<a href="index.html" class="logo"> <span> <img
-						src="../../assets/images/logo.png" alt="" height="25">
-				</span> <i> <img src="../../assets/images/logo_sm.png" alt=""
-						height="28">
-				</i>
-				</a>
+<body id="theme-default" class="full_block">
+<div  th:replace="MenuAdmin :: menuAdmin">
+	
+	
+	
+	
+</div>
+<div id="container">
+	<div id="header" class="blue_lin" >
+		<div class="header_left">
+			<div class="logo">
+				<img src="images/logo.png" width="160" height="60" alt="Ekra">
 			</div>
-			<!-- end navbar -->
+			
 		</div>
-		<!-- Top Bar End -->
-
-
-		<!-- ========== Left Sidebar Start ========== -->
-		<div class="left side-menu">
-			<div class="slimscroll-menu" id="remove-scroll">
-
-				<!--- Sidemenu -->
-				<div id="sidebar-menu">
-					<!-- Left Menu Start -->
-					<ul class="metisMenu nav" id="side-menu">
-						<li class="menu-title">Navigation</li>
-						<li><a href="javascript: void(0);" aria-expanded="true"><i
-								class="fi-air-play"></i> <span>
-									Vehicule </span></a>
-							</li>
-
-						
-
-					</ul>
-
-				</div>
-				<!-- Sidebar -->
-				<div class="clearfix"></div>
-
-			</div>
-			<!-- Sidebar -left -->
-
-		</div>
-		<!-- Left Sidebar End -->
-
-
-
-		<!-- ============================================================== -->
-		<!-- Start right Content here -->
-		<!-- ============================================================== -->
-		<div class="content-page">
-			<!-- Start content -->
-			<div class="content">
-				<div class="container">
-
-					<div class="row">
-						<div class="col-xs-12">
-							<div class="page-title-box">
-								<h4 class="page-title">Basic Inputs</h4>
-								<ol class="breadcrumb p-0 m-0">
-									<li><a href="#">Adminox</a></li>
-									<li><a href="#">Forms</a></li>
-									<li class="active">Form elements</li>
-								</ol>
-								<div class="clearfix"></div>
-							</div>
+		<div class="header_right">
+			<div id="top_notification">
+				<ul>
+					<li class="dropdown">
+					<a href="#" data-toggle="dropdown" class="dropdown-toggle alert"><span class="icon"></span><span class="alert_notify orange">30</span></a>
+					<div class="notification_list dropdown-menu pull-left blue_d">
+						<div class="white_lin nlist_block">
+							<ul>
+								<li>
+								<div class="nlist_thumb">
+									<img src="images/photo_60x60.jpg" width="40" height="40" alt="img">
+								</div>
+								<div class="list_inf">
+									<a href="#">Cras erat diam, consequat quis tincidunt nec, eleifend.</a>
+								</div>
+								</li>
+								<li>
+								<div class="nlist_thumb">
+									<img src="images/photo_60x60.jpg" width="40" height="40" alt="img">
+								</div>
+								<div class="list_inf">
+									<a href="#">Cras erat diam, consequat quis tincidunt nec, eleifend.</a>
+								</div>
+								</li>
+								<li>
+								<div class="nlist_thumb">
+									<img src="images/photo_60x60.jpg" width="40" height="40" alt="img">
+								</div>
+								<div class="list_inf">
+									<a href="#">Cras erat diam, consequat quis tincidunt nec, eleifend.</a>
+								</div>
+								</li>
+							</ul>
+							<span class="btn_24_blue"><a href="#">View All</a></span>
 						</div>
 					</div>
-					<!-- end row -->
-
-					
-
-
-					
-					<!-- end row -->
-
-
-					<div class="row">
-						<div class="col-md-12">
-							<div class="card-box">
-								<h4 class="m-t-0 header-title">
-									<b>Ajout Vehicule</b>
-								</h4>
-								<div class="p-20">
-									<form th:action="@{/Chauffeur/ModifierVehicule}" method="post" th:object="${vehicule}">
-
-							<div class="body">
-								<div class="row clearfix">
-									<div class="col-sm-6">
-										<div class="form-group">
-											<div class="form-line">
-												<input type="text" class="form-control" th:value="${vehicule.matricule}" th:field ="*{matricule}" placeholder="Matricole" />
-											</div>
-										</div>
-									</div>
-									<div class="col-sm-6">
-										<div class="form-group">
-											<div class="form-line">
-												<input type="text" class="form-control" th:value="${vehicule.marque}" th:field ="*{marque}" placeholder="Marque" />
-											</div>
-										</div>
+					</li>
+					<li class="inbox dropdown">
+					<a href="#" data-toggle="dropdown" class="dropdown-toggle"><span class="icon"></span><span class="alert_notify blue">30</span></a>
+					<div class="notification_list dropdown-menu blue_d">
+						<div class="white_lin nlist_block">
+							<ul>
+								<li>
+								<div class="nlist_thumb">
+									<img src="images/photo_60x60.jpg" width="40" height="40" alt="img">
+								</div>
+								<div class="list_inf">
+									<a href="#">Cras erat diam, consequat quis tincidunt nec, eleifend.</a>
+								</div>
+								</li>
+								<li>
+								<div class="nlist_thumb">
+									<img src="images/photo_60x60.jpg" width="40" height="40" alt="img">
+								</div>
+								<div class="list_inf">
+									<a href="#">Cras erat diam, consequat quis tincidunt nec, eleifend.</a>
+								</div>
+								</li>
+								<li>
+								<div class="nlist_thumb">
+									<img src="images/photo_60x60.jpg" width="40" height="40" alt="img">
+								</div>
+								<div class="list_inf">
+									<a href="#">Cras erat diam, consequat quis tincidunt nec, eleifend.</a>
+								</div>
+								</li>
+							</ul>
+							<span class="btn_24_blue"><a href="#">View All</a></span>
+						</div>
+					</div>
+					</li>
+				</ul>
+			</div>
+			<div id="user_nav">
+				<ul>
+					<li class="user_thumb"><a href="#"><span class="icon"><img src="images/user_thumb.png" width="30" height="30" alt="User"></span></a></li>
+					<li class="user_info"><span class="user_name">Administrator</span><span><a href="#">Profile</a> &#124; <a href="#">Settings</a> &#124; <a href="#">Help&#63;</a></span></li>
+					<li class="logout"><a href="#"><span class="icon"></span>Logout</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	
+	<div class="switch_bar" th:fragment="switch-bar">
+		<ul>
+			<li>
+			<a href="#"><span class="stats_icon current_work_sl"></span><span class="label">Analytics</span></a>
+			</li>
+			<li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle"><span class="stats_icon user_sl"></span><span class="label"> Chauffeurs</span></a>
+			<div class="notification_list dropdown-menu blue_d">
+				<div class="white_lin nlist_block">
+					<ul>
+						<li>
+						<div class="nlist_thumb">
+							<img src="images/photo_60x60.jpg" width="40" height="40" alt="img">
+						</div>
+						<div class="list_inf">
+							<a href="#">Cras erat diam, consequat quis tincidunt nec, eleifend.</a>
+						</div>
+						</li>
+						<li>
+						<div class="nlist_thumb">
+							<img src="images/photo_60x60.jpg" width="40" height="40" alt="img">
+						</div>
+						<div class="list_inf">
+							<a href="#">Cras erat diam, consequat quis tincidunt nec, eleifend.</a>
+						</div>
+						</li>
+						<li>
+						<div class="nlist_thumb">
+							<img src="images/photo_60x60.jpg" width="40" height="40" alt="img">
+						</div>
+						<div class="list_inf">
+							<a href="#">Cras erat diam, consequat quis tincidunt nec, eleifend.</a>
+						</div>
+						</li>
+					</ul>
+					<span class="btn_24_blue"><a href="#">View All</a></span>
+				</div>
+			</div>
+			</li>
+						<li><a href="#"><span class="stats_icon car_co"></span><span class="label">Vehicule</span></a></li>
+			
+			<li><a href="#"><span class="stats_icon user_sl"></span><span class="label">Fournisseur</span></a></li>
+			<li><a href="#"><span class="stats_icon config_sl"></span><span class="label">Vidange</span></a></li>
+			<li><a th:href="@{/AjoutEntretient}"><span class="stats_icon calendar_sl"></span><span class="label">Entretients</span></a></li>
+		</ul>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+							<div id="content">
+		<div class="grid_container">
+			<div class="grid_12">
+				<div class="widget_wrap">
+					<div class="widget_top">
+						<span class="h_icon list"></span>
+						<h6>Modifier Vehicule</h6>
+					</div>
+					<div class="widget_content">
+									
+						<form th:action="@{/Vehicule/modifier_vehicule}" method="post" th:object="${vehicule}" class="form_container left_label">
+ 
+							<ul>
+								<li>
+								<div >
+									<label class="field_title" >Matricule<span class="req">*</span></label>
+									<div class="form_input">
+										<input type="text" th:value="${vehicule.matricule}" th:field ="*{matricule}" placeholder="Matricole" class="limiter required small"/>
 									</div>
 								</div>
-								<div class="row clearfix">
-									<div class="col-sm-6">
-										<div class="form-group">
-											<div class="form-line">
-												<input type="text" class="form-control" th:value="${vehicule.genre}" th:field ="*{genre}" placeholder="Genre" />
-											</div>
-										</div>
+								</li>
+								<li>
+								<div class="form_grid_12">
+									<label class="field_title" >Marque <span class="req">*</span></label>
+									<div class="form_input">
+										<input  type="text" th:value="${vehicule.marque}" th:field ="*{marque}" placeholder="Marque" class="required limiter mid"/>
 									</div>
-									
-									<div class="col-sm-12">
-										<button type="submit" class="btn btn-raised g-bg-cyan">Submit</button>
-										<button type="submit" class="btn btn-raised">Cancel</button>
+								</div>
+								</li>
+								<li>
+								<div class="form_grid_12">
+									<label class="field_title" >Genre <span class="req">*</span></label>
+									<div class="form_input">
+										<input  type="text" th:value="${vehicule.genre}" th:field ="*{genre}" placeholder="Genre" class="required large"/>
 									</div>
+								</div>
+								</li>
+								
+								<li>
+								<div class="form_grid_12">
+									<label class="field_title">Puissance<span class="req">*</span></label>
+									<div class="form_input">
+										<input th:value="${vehicule.puissance}" th:field ="*{puissance}" placeholder="Puissance" type="text" tabindex="2"/>
+									</div>
+								</div>
+								</li>
+								<li>
+								<div class="form_grid_12">
+									<label class="field_title" >Premiere Circulation<span class="req">*</span></label>
+									<div class="form_input">
+										<input th:value="${vehicule.premiereCirculation}" th:field ="*{premiereCirculation}" placeholder="Date de la premiere circulation" type="text" tabindex="2"/>
+									</div>
+								</div>
+								</li>
+								<li>
+								<div class="form_grid_12">
+									<label class="field_title" >Type Carburant<span class="req">*</span></label>
+									<div class="form_input">
+										<input th:value="${vehicule.typeCarburant}" th:field ="*{typeCarburant}" placeholder="Type Carburant" type="text" tabindex="2"/>
+									</div>
+								</div>
+								</li>
+								
+								<li>
+								<div class="form_grid_12">
+									<div class="form_input">
+										<button type="submit" class="btn_small btn_blue"><span>Submit</span></button>
+										<button type="reset" class="btn_small btn_blue"><span>Reset</span></button>
+									</div>
+								</div>
+								</li>
+							</ul>
 						</form>
 									
 								</div>
-							</div>
-							<!-- end card-box -->
-						</div>
-						<!-- end col -->
-					</div>
-					<!-- end row -->
-
 				</div>
-				<!-- container -->
-
 			</div>
-			<!-- content -->
-
-			<footer class="footer text-right"> 2017 © Adminox. -
-				Coderthemes.com </footer>
-
+			
 		</div>
-
-
-		<!-- ============================================================== -->
-		<!-- End Right content here -->
-		<!-- ============================================================== -->
-
-
+		
 	</div>
-	<!-- END wrapper -->
-
-
-
-	<!-- jQuery  -->
-	<script src="../../assets/js/jquery.min.js"></script>
-	<script src="../../assets/js/bootstrap.min.js"></script>
-	<script src="../../assets/js/metisMenu.min.js"></script>
-	<script src="../../assets/js/waves.js"></script>
-	<script src="../../assets/js/jquery.slimscroll.js"></script>
-
-	<!-- App js -->
-	<script src="../../assets/js/jquery.core.js"></script>
-	<script src="../../assets/js/jquery.app.js"></script>
-
+</div>
 </body>
+
+<!-- Mirrored from www.lab.westilian.com/bingo-admin/invoice.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 16 Dec 2018 22:33:31 GMT -->
 </html>

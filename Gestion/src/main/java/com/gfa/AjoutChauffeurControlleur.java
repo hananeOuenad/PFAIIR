@@ -10,8 +10,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.gfa.dao.ChauffeurRepository;
- 
+import com.gfa.dao.VehiculeRepository;
 import com.gfa.entities.Chauffeur;
+import com.gfa.entities.EntretientPrevertif;
 import com.gfa.entities.Vehicule;
  
 
@@ -20,6 +21,9 @@ import com.gfa.entities.Vehicule;
 public class AjoutChauffeurControlleur {
 	@Autowired
 	private ChauffeurRepository cr;
+	@Autowired
+	private VehiculeRepository vn;
+	
 	@RequestMapping(value="/list" , method=RequestMethod.GET)
 	public String Index(Model model) {
 		List<Chauffeur>chauffeurs=cr.findAll();
@@ -50,4 +54,22 @@ List<Chauffeur>chauffeurs=cr.findAll();
 model.addAttribute("chauffeur", chauffeurs);
 		return "ListChauffeur";
 	}
+	
+	@RequestMapping(value="/SaveChauffeur" , method=RequestMethod.POST)
+	public String save(Chauffeur v, Model model) {
+     		cr.saveAndFlush(v);
+List<Chauffeur>chauffeurs=cr.findAll();
+model.addAttribute("vehicule", chauffeurs);
+		return "AjoutChauffeur";
+	}
+@RequestMapping(value="/AjoutChauffeur" , method=RequestMethod.GET)
+	
+	public String AjoutChauffeur(Model model) {
+		model.addAttribute("chauffeur", new Chauffeur());
+		List<Chauffeur>vehicules= cr.findAll();
+		model.addAttribute("vehicule", vehicules);
+		return "AjoutChauffeur";}
+
+
+
 }

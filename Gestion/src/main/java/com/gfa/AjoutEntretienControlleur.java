@@ -24,10 +24,8 @@ public class AjoutEntretienControlleur {
 	private VehiculeRepository vn;
 
 	@RequestMapping(value="/listeEntretien" , method=RequestMethod.GET)
-	
 	public String Index(Model model, Model model1, Vehicule vvv) {
 		List<EntretientPrevertif>entretients=en.findAll();
-
 		for (EntretientPrevertif en : entretients) {
 			vvv=en.getVehicule();
 			

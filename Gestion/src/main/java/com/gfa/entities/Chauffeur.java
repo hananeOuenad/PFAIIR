@@ -22,8 +22,9 @@ public class Chauffeur  implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	@Id
-private int id;
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+
+private int id;
 private String nom;
 private String prenom;
 private String cin;

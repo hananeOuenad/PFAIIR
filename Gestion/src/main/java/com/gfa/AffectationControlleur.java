@@ -27,7 +27,7 @@ public class AffectationControlleur {
 	private ChauffeurRepository cr;
 	
 	@RequestMapping(value="/Saveaffectation" , method=RequestMethod.POST)
-	public String save( @RequestParam(name="veh") int veh, @RequestParam(name="chauf") int chauf) {
+	public String save( @RequestParam(name="veh") int veh, @RequestParam(name="chauf") int chauf, @RequestParam(name="id") int id) {
 		Vehicule v=vr.getOne(veh);
 		Chauffeur f=cr.getOne(chauf);
 v.getChauffeurs().add(f);

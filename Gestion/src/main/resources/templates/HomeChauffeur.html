@@ -96,7 +96,7 @@
 <script src="../../js/custom-scripts.js"></script>
 </head>
 <body id="theme-default" class="full_block">
-<div  th:replace="MenuAdmin :: menuAdmin">
+<div  th:replace="MenuChauffeur :: menuChauffeur">
 	
 	
 	
@@ -238,96 +238,174 @@
 			<li><a th:href="@{/AjoutEntretient}"><span class="stats_icon calendar_sl"></span><span class="label">Entretients</span></a></li>
 		</ul>
 	</div>
-	<div id="content">
+<div id="content">
 		<div class="grid_container">
 			<div class="grid_12">
 				<div class="widget_wrap">
 					<div class="widget_top">
 						<span class="h_icon list"></span>
-						<h6>Ajout Chauffeur</h6>
+						<h6>Mes Informations</h6>
 					</div>
+					
 					<div class="widget_content">
-								<form th:action="@{/Chauffeur/SaveChauffeur}" method="post" th:object="${chauffeur}" class="form_container left_label">
- 
-							<ul>
-								<li>
-								<div >
-									<label class="field_title" >Nom: <span class="req">*</span></label>
-									<div class="form_input">
-										<input type="text" th:field ="*{nom}" placeholder="Nom" class="limiter required small"/>
+						<div class=" page_content">
+							<div class="invoice_container">
+								<div class="invoice_action_bar">
+									
+									<div class="btn_30_light" data-th-each="e : ${chauffeur}">
+										<a th:href="@{/ChauffeurUser/modifier_chauffeur(id=${e.id})}" title="Modifier"><span class="icon application_edit_co"></span><span class="btn_link">Modifier Mes Infos</span></a>
 									</div>
 								</div>
-								</li>
-								<li>
-								<div class="form_grid_12">
-									<label class="field_title" >Prenom: <span class="req">*</span></label>
-									<div class="form_input">
-										<input  type="text" th:field ="*{prenom}" placeholder="Prenom" class="required limiter mid"/>
-									</div>
-								</div>
-								</li>
-								<li>
-								<div class="form_grid_12">
-									<label class="field_title" >CIN: <span class="req">*</span></label>
-									<div class="form_input">
-										<input  type="text" th:field ="*{cin}" placeholder="CIN" class="required large"/>
-									</div>
-								</div>
-								</li>
 								
-								<li>
-								<div class="form_grid_12">
-									<label class="field_title">Email: <span class="req">*</span></label>
-									<div class="form_input">
-										<input th:field ="*{email}" placeholder="Email" type="text" tabindex="2"/>
-									</div>
+								<div class="grid_6 invoice_to">
+									<ul>
+										<li>
+										<strong><span>Nom : </span></strong>
+										<strong><span>Prenom : </span></strong>
+										<strong><span>Email : </span></strong>
+										<strong><span>Cin :</span></strong>
+										
+										<strong><span>Tel :</span></strong>
+
+										<strong><span>Login :</span></strong>
+										</li>
+									</ul>
 								</div>
-								</li>
-								<li>
-								<div class="form_grid_12">
-									<label class="field_title">Login: <span class="req">*</span></label>
-									<div class="form_input">
-										<input th:field ="*{login}" placeholder="Email" type="text" tabindex="2"/>
-									</div>
+								<div class="grid_6 invoice_from">
+									<ul>
+										<li  data-th-each="e : ${chauffeur}">
+										<strong><span th:text="${e.nom}"></span></strong>
+										<strong><span th:text="${e.prenom}"></span></strong>
+										<strong><span th:text="${e.email}"></span></strong>
+										<strong><span th:text="${e.cin}"></span></strong>
+										<strong><span th:text="${e.tel}"></span></strong>
+										<strong><span th:text="${e.login}"></span></strong>
+										
+										</li>
+									</ul>
 								</div>
-								</li>
-								<li>
-								<div class="form_grid_12">
-									<label class="field_title">Mdp: <span class="req">*</span></label>
-									<div class="form_input">
-										<input th:field ="*{mdp}" placeholder="Email" type="text" tabindex="2"/>
+								<span class="clear"></span>
+								<div class="grid_12 invoice_details">
+									<div class="invoice_tbl">
+										<table>
+										<thead>
+										<tr class=" gray_sai">
+											<th>
+												SI#
+											</th>
+											<th>
+												Order ID
+											</th>
+											<th>
+												Date
+											</th>
+											<th>
+												Details
+											</th>
+											<th>
+												Qty
+											</th>
+											<th>
+												Unit Price
+											</th>
+											<th>
+												Total
+											</th>
+										</tr>
+										</thead>
+										<tbody>
+										<tr>
+											<td>
+												1
+											</td>
+											<td>
+												#DMC 01245
+											</td>
+											<td>
+												12/5/2012
+											</td>
+											<td class="left_align">
+												5GB Dedicated Hosting
+											</td>
+											<td>
+												1
+											</td>
+											<td>
+												$250
+											</td>
+											<td>
+												$250
+											</td>
+										</tr>
+										<tr>
+											<td>
+												2
+											</td>
+											<td>
+												#DMC 01246
+											</td>
+											<td>
+												15/5/2012
+											</td>
+											<td class="left_align">
+												20GB Mail server
+											</td>
+											<td>
+												2
+											</td>
+											<td>
+												$450
+											</td>
+											<td>
+												$900
+											</td>
+										</tr>
+										<tr>
+											<td>
+												3
+											</td>
+											<td>
+												#DMC 01248
+											</td>
+											<td>
+												19/5/2012
+											</td>
+											<td class="left_align">
+												Domain Registration
+											</td>
+											<td>
+												5
+											</td>
+											<td>
+												$10
+											</td>
+											<td>
+												$50
+											</td>
+										</tr>
+										<tr>
+											<td colspan="6" class="grand_total">
+												Grand Total:
+											</td>
+											<td>
+												$1200
+											</td>
+										</tr>
+										</tbody>
+										</table>
 									</div>
+									
 								</div>
-								</li>
-								<li>
-								<div class="form_grid_12">
-									<label class="field_title" >Tel: <span class="req">*</span></label>
-									<div class="form_input">
-										<input th:field ="*{tel}" placeholder="Tel" type="text" tabindex="2"/>
-									</div>
-								</div>
-								</li>
-								
-								
-								<li>
-								<div class="form_grid_12">
-									<div class="form_input">
-										<button type="submit" class="btn_small btn_blue"><span>Submit</span></button>
-										<button type="reset" class="btn_small btn_blue"><span>Reset</span></button>
-									</div>
-								</div>
-								</li>
-							</ul>
-						</form>
+								<span class="clear"></span>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
-			
 		</div>
-		
+		<span class="clear"></span>
 	</div>
-</div>
-</body>
+	</body>
 
 <!-- Mirrored from www.lab.westilian.com/bingo-admin/invoice.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 16 Dec 2018 22:33:31 GMT -->
 </html>

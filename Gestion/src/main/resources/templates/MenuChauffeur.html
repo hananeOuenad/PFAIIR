@@ -1,0 +1,43 @@
+<div id="left_bar" th:fragment="menuChauffeur">
+	
+	
+	
+		<div id="secondary_nav">
+			<ul id="sidenav" class="accordion_mnu collapsible">
+				<li><a th:href="@{/HomeAdmin}"><span class="nav_icon computer_imac"></span> Dashboard</a>
+				</li>
+				<li><a href="#"><span class="nav_icon frames"></span>ListeVehicule<span class="up_down_arrow">&nbsp;</span></a>
+				<ul class="acitem">
+					<li><a th:href="@{/Vehicule/AjoutVehicule}"><span class="list-icon">&nbsp;</span>ListeVehicule</a></li>
+					<li><a  th:href="@{/Vehicule/list}"><span class="list-icon">&nbsp;</span>Liste des Vehicules</a></li>
+					
+				</ul>
+				</li>
+				<li><a href="#"><span class="nav_icon frames"></span>Entretiens a venir<span class="up_down_arrow">&nbsp;</span></a>
+				<ul class="acitem">
+					<li><a th:href="@{/Chauffeur/AjoutChauffeur}"><span class="list-icon">&nbsp;</span>Ajouter Chauffeur</a></li>
+					<li><a th:href="@{/Chauffeur/ListChauffeur}"><span class="list-icon">&nbsp;</span>Liste des Chauffeurs</a></li>
+					
+				</ul>
+				</li>
+				<li><a href="#"><span class="nav_icon frames"></span>Informations vidanges<span class="up_down_arrow">&nbsp;</span></a>
+				<ul class="acitem">
+					<li><a th:href="@{/Batterie/AjoutBatterie}"><span class="list-icon">&nbsp;</span>Ajouter Batterie</a></li>
+					<li><a th:href="@{/Batterie/ListBatterie}"><span class="list-icon">&nbsp;</span>Liste des Batteries</a></li>
+					
+				</ul>
+				</li>
+				
+				
+				<li><a href="#"><span class="nav_icon frames"></span>Entretien<span class="up_down_arrow">&nbsp;</span></a>
+				<ul class="acitem">
+					<li><a th:href="@{/Entretien/AjoutEntretient}"><span class="list-icon">&nbsp;</span>Ajouter Entretien</a></li>
+					<li><a th:href="@{/Entretien/Liste}"><span class="list-icon">&nbsp;</span>Liste des Entretiens</a></li>
+					
+				</ul>
+				</li>
+				
+			</ul>
+		</div>
+	
+</div>

@@ -96,7 +96,7 @@
 <script src="../../js/custom-scripts.js"></script>
 </head>
 <body id="theme-default" class="full_block">
-<div  th:replace="MenuAdmin :: menuAdmin">
+<div  th:replace="MenuChauffeur :: menuChauffeur">
 	
 	
 	
@@ -238,23 +238,30 @@
 			<li><a th:href="@{/AjoutEntretient}"><span class="stats_icon calendar_sl"></span><span class="label">Entretients</span></a></li>
 		</ul>
 	</div>
-	<div id="content">
+<div id="content">
 		<div class="grid_container">
 			<div class="grid_12">
 				<div class="widget_wrap">
 					<div class="widget_top">
 						<span class="h_icon list"></span>
-						<h6>Ajout Chauffeur</h6>
+						<h6>Modifier Mes Informations</h6>
 					</div>
 					<div class="widget_content">
-								<form th:action="@{/Chauffeur/SaveChauffeur}" method="post" th:object="${chauffeur}" class="form_container left_label">
+									
+						<form th:action="@{/ChauffeurUser/ModifierChauffeur}" method="post" th:object="${chauffeur}" class="form_container left_label">
  
 							<ul>
 								<li>
 								<div >
-									<label class="field_title" >Nom: <span class="req">*</span></label>
+									<label class="field_title" >Nom<span class="req">*</span></label>
 									<div class="form_input">
-										<input type="text" th:field ="*{nom}" placeholder="Nom" class="limiter required small"/>
+										<input type="text"  th:value="${chauffeur.id}" th:field ="*{id}" name="id" placeholder="Matricole" class="limiter required small"/>
+									</div>
+								</div>
+								<div >
+									<label class="field_title" >Nom<span class="req">*</span></label>
+									<div class="form_input">
+										<input type="text"  th:value="${chauffeur.nom}" th:field ="*{nom}" name="nom" placeholder="Matricole" class="limiter required small"/>
 									</div>
 								</div>
 								</li>
@@ -262,7 +269,7 @@
 								<div class="form_grid_12">
 									<label class="field_title" >Prenom: <span class="req">*</span></label>
 									<div class="form_input">
-										<input  type="text" th:field ="*{prenom}" placeholder="Prenom" class="required limiter mid"/>
+										<input  type="text"  th:value="${chauffeur.prenom}" th:field ="*{prenom}" name="prenom" placeholder="Prenom" class="required limiter mid"/>
 									</div>
 								</div>
 								</li>
@@ -270,7 +277,7 @@
 								<div class="form_grid_12">
 									<label class="field_title" >CIN: <span class="req">*</span></label>
 									<div class="form_input">
-										<input  type="text" th:field ="*{cin}" placeholder="CIN" class="required large"/>
+										<input  type="text" th:value="${chauffeur.cin}" th:field ="*{cin}"  name="cin" placeholder="CIN" class="required large"/>
 									</div>
 								</div>
 								</li>
@@ -279,7 +286,7 @@
 								<div class="form_grid_12">
 									<label class="field_title">Email: <span class="req">*</span></label>
 									<div class="form_input">
-										<input th:field ="*{email}" placeholder="Email" type="text" tabindex="2"/>
+										<input th:value="${chauffeur.email}" name="email" th:field ="*{email}" placeholder="Email" type="text" tabindex="2"/>
 									</div>
 								</div>
 								</li>
@@ -287,7 +294,7 @@
 								<div class="form_grid_12">
 									<label class="field_title">Login: <span class="req">*</span></label>
 									<div class="form_input">
-										<input th:field ="*{login}" placeholder="Email" type="text" tabindex="2"/>
+										<input  th:value="${chauffeur.login}" name="login" th:field ="*{login}" placeholder="Email" type="text" tabindex="2"/>
 									</div>
 								</div>
 								</li>
@@ -295,7 +302,7 @@
 								<div class="form_grid_12">
 									<label class="field_title">Mdp: <span class="req">*</span></label>
 									<div class="form_input">
-										<input th:field ="*{mdp}" placeholder="Email" type="text" tabindex="2"/>
+										<input  th:value="${chauffeur.mdp}" th:field ="*{mdp}" name="mdp" placeholder="Email" type="text" tabindex="2"/>
 									</div>
 								</div>
 								</li>
@@ -303,11 +310,10 @@
 								<div class="form_grid_12">
 									<label class="field_title" >Tel: <span class="req">*</span></label>
 									<div class="form_input">
-										<input th:field ="*{tel}" placeholder="Tel" type="text" tabindex="2"/>
+										<input  th:value="${chauffeur.tel}" th:field ="*{tel}" name="tel" placeholder="Tel" type="text" tabindex="2"/>
 									</div>
 								</div>
 								</li>
-								
 								
 								<li>
 								<div class="form_grid_12">
@@ -319,7 +325,8 @@
 								</li>
 							</ul>
 						</form>
-					</div>
+									
+								</div>
 				</div>
 			</div>
 			

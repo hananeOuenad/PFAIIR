@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.gfa.dao.AdminRepository;
 import com.gfa.dao.ChauffeurRepository;
 import com.gfa.entities.Admin;
+import com.gfa.entities.Chauffeur;
 
 @Controller
 @RequestMapping(value="/")
@@ -27,7 +28,7 @@ public class HomeControlleur {
 				return "Authentification";
 	}
 	@RequestMapping(value="/login" , method=RequestMethod.POST)
-	public String verifier(@RequestParam(name="login") String login,@RequestParam(name="mdp") String mdp, @RequestParam(name="role") String role) {
+	public String verifier(Model model, @RequestParam(name="login") String login,@RequestParam(name="mdp") String mdp, @RequestParam(name="role") String role) {
 		System.out.println(login);
 		System.out.println(mdp);
 		System.out.println(role);
@@ -39,12 +40,24 @@ public class HomeControlleur {
 			
 		Admin admin=ad.findAdminbyloginmdp(login, mdp);
 		if(admin !=null) {
+			model.addAttribute("admin", admin);
+
 			return "homeAdmin";
+
 		}
 		else 
 				return "Authentification";
 		}
-		
+		else if(role.equals("Chauffeur")) {
+			
+			Chauffeur chauffeur=cr.findChauffeurbyloginmdp(login, mdp);
+			if(chauffeur !=null) {
+				model.addAttribute("chauffeur", chauffeur);
+
+				return "homeChauffeur";
+			}else 
+				return "Authentification";
+		}
 		return "Authentification";
 
 				

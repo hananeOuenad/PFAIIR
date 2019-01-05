@@ -29,14 +29,22 @@ private String nom;
 private String prenom;
 private String cin;
 private String email;
+private String login;
 private long tel;
-private String photo;
+private String mdp;
+
 @ManyToMany(mappedBy="chauffeurs")
 @JsonIgnore
 private Collection<Vehicule>vehicules;
 
 
 
+public String getLogin() {
+	return login;
+}
+public void setLogin(String login) {
+	this.login = login;
+}
 public String getEmail() {
 	return email;
 }
@@ -49,11 +57,13 @@ public long getTel() {
 public void setTel(long tel) {
 	this.tel = tel;
 }
-public String getPhoto() {
-	return photo;
+
+
+public String getMdp() {
+	return mdp;
 }
-public void setPhoto(String photo) {
-	this.photo = photo;
+public void setMdp(String mdp) {
+	this.mdp = mdp;
 }
 public Collection<Vehicule> getVehicules() {
 	return vehicules;
@@ -88,16 +98,16 @@ public void setCin(String cin) {
 }
 
 
-public Chauffeur(String nom, String prenom, String cin, String email, long tel, String photo) {
+public Chauffeur(String nom, String prenom, String cin, String email, long tel, String mdp) {
 	super();
 	this.nom = nom;
 	this.prenom = prenom;
 	this.cin = cin;
 	this.email = email;
 	this.tel = tel;
-	this.photo = photo;
+	this.mdp = mdp;
 }
-public Chauffeur(String nom, String prenom, String cin, String email, long tel, String photo,
+public Chauffeur(String nom, String prenom, String cin, String email, long tel, String mdp,
 		Collection<Vehicule> vehicules) {
 	super();
 	this.nom = nom;
@@ -105,8 +115,32 @@ public Chauffeur(String nom, String prenom, String cin, String email, long tel, 
 	this.cin = cin;
 	this.email = email;
 	this.tel = tel;
-	this.photo = photo;
+	this.mdp = mdp;
 	this.vehicules = vehicules;
+}
+
+public Chauffeur(String nom, String prenom, String cin, String email, String login, long tel, String mdp,
+		Collection<Vehicule> vehicules) {
+	super();
+	this.nom = nom;
+	this.prenom = prenom;
+	this.cin = cin;
+	this.email = email;
+	this.login = login;
+	this.tel = tel;
+	this.mdp = mdp;
+	this.vehicules = vehicules;
+}
+
+public Chauffeur(String nom, String prenom, String cin, String email, String login, long tel, String mdp) {
+	super();
+	this.nom = nom;
+	this.prenom = prenom;
+	this.cin = cin;
+	this.email = email;
+	this.login = login;
+	this.tel = tel;
+	this.mdp = mdp;
 }
 public Chauffeur() {
 	super();

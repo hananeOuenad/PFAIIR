@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.gfa.dao.ChauffeurRepository;
 import com.gfa.dao.VehiculeRepository;
 import com.gfa.entities.Chauffeur;
+import com.gfa.entities.Vehicule;
 
 @Controller
 @RequestMapping(value="/ChauffeurUser")
@@ -21,11 +22,14 @@ public class ChauffeurControlleur {
 	@Autowired
 	private VehiculeRepository vn;
 	
-	@RequestMapping(value="/list" , method=RequestMethod.GET)
-	public String Index(Model model) {
-		List<Chauffeur>chauffeurs=cr.findAll();
-		model.addAttribute("chauffeur", chauffeurs);
-				return "ListChauffeur";
+	@RequestMapping(value="/listeVehiculeParChauffeur" , method=RequestMethod.GET)
+	public String Index(Model model, Model model1, @RequestParam(name="id")int id) {
+		Chauffeur chauffeur=cr.getOne(id);
+		List<Vehicule>vehicules=(List<Vehicule>) chauffeur.getVehicules();
+		model.addAttribute("vehicule", vehicules);
+		model.addAttribute("chauffeur", chauffeur);
+
+				return "ListeVehiculeDeChauffeur";
 	}
 	@RequestMapping(value = "/delete_chauffeur", method = RequestMethod.GET)
 	public String DeleteVehicule(@RequestParam(name="id")int id, Model model) {

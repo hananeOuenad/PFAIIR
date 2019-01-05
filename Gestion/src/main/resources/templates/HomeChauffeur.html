@@ -95,7 +95,7 @@
 <script src="../../js/chart-plugins/jqplot.meterGaugeRenderer.min.js"></script>
 <script src="../../js/custom-scripts.js"></script>
 </head>
-<body id="theme-default" class="full_block">
+<body id="theme-default" class="full_block" data-th-each="e : ${chauffeur}">
 <div  th:replace="MenuChauffeur :: menuChauffeur">
 	
 	
@@ -252,7 +252,7 @@
 							<div class="invoice_container">
 								<div class="invoice_action_bar">
 									
-									<div class="btn_30_light" data-th-each="e : ${chauffeur}">
+									<div class="btn_30_light">
 										<a th:href="@{/ChauffeurUser/modifier_chauffeur(id=${e.id})}" title="Modifier"><span class="icon application_edit_co"></span><span class="btn_link">Modifier Mes Infos</span></a>
 									</div>
 								</div>
@@ -273,7 +273,7 @@
 								</div>
 								<div class="grid_6 invoice_from">
 									<ul>
-										<li  data-th-each="e : ${chauffeur}">
+										<li>
 										<strong><span th:text="${e.nom}"></span></strong>
 										<strong><span th:text="${e.prenom}"></span></strong>
 										<strong><span th:text="${e.email}"></span></strong>

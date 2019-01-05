@@ -27,6 +27,12 @@ public class HomeControlleur {
 		model.addAttribute("Admin", new Admin());
 				return "Authentification";
 	}
+	@RequestMapping(value="/homeChauffeur" , method=RequestMethod.GET)
+	public String IndexChauffeur(Model model, @RequestParam(name="id") int id) {
+		Chauffeur chauffeur=cr.getOne(id);
+		model.addAttribute("chauffeur", chauffeur);
+				return "homeChauffeur";
+	}
 	@RequestMapping(value="/login" , method=RequestMethod.POST)
 	public String verifier(Model model, @RequestParam(name="login") String login,@RequestParam(name="mdp") String mdp, @RequestParam(name="role") String role) {
 		System.out.println(login);

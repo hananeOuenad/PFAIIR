@@ -46,9 +46,6 @@ public class ChauffeurControlleur {
 		}
 				
 				
-				
-				
-				
 		model.addAttribute("chauffeur", chauffeur);
 
 				return "ListeEntretienDeChauffeur";
@@ -69,6 +66,28 @@ public class ChauffeurControlleur {
 		model.addAttribute("chauffeur", chauffeur);
 	    return "ModifierChauffeurByChauffeur";
 	}
+	
+	@RequestMapping(value="/AjouterObservation" , method=RequestMethod.GET)
+
+	public String AjoutObservation(Chauffeur chauffeur,Model model,Model model1, @RequestParam(name="id")int id) {
+		EntretientPrevertif entretien=en.getOne(id);
+		model.addAttribute("entretien", entretien);
+		model.addAttribute("chauffeur", chauffeur);
+
+		return "AjoutObservationEntretien";}
+
+	@RequestMapping(value="/AjoutObservationpourEntretien" , method=RequestMethod.POST)
+
+	public String SaveObservation(Chauffeur chauffeur,Model model,Model model1, @RequestParam(name="id")int id, @RequestParam(name="observation")String observation) {
+		EntretientPrevertif entretien=en.getOne(id);
+		entretien.setObservation(observation);
+		en.save(entretien);
+		model.addAttribute("entretien", entretien);
+		model.addAttribute("chauffeur", chauffeur);
+
+		return "ListeEntretienDeChauffeur";}
+
+	
 
 	@RequestMapping(value="/ModifierChauffeur" , method=RequestMethod.POST)
 	public String modifier(Chauffeur c, Model model,@RequestParam(name="id")int id,@RequestParam(name="nom")String nom,
@@ -108,3 +127,5 @@ model.addAttribute("vehicule", chauffeurs);
 
 
 }
+
+

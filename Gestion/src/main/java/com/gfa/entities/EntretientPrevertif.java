@@ -32,6 +32,13 @@ public class EntretientPrevertif implements Serializable  {
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="code_vehicule4") 
 	private Vehicule vehicule4;
+	
+	public String getObservation() {
+		return observation;
+	}
+	public void setObservation(String observation) {
+		this.observation = observation;
+	}
 	public int getId() {
 		return id;
 	}

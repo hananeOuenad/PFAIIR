@@ -1,14 +1,14 @@
-<div id="left_bar" th:fragment="menuChauffeur" data-th-each="e : ${chauffeur}">
+<div id="left_bar" th:fragment="menuChauffeur" data-th-each="ee : ${chauffeur}">
 	
 	
 	
 		<div id="secondary_nav">
 			<ul id="sidenav" class="accordion_mnu collapsible">
-				<li><a th:href="@{/HomeAdmin}"><span class="nav_icon computer_imac"></span> Dashboard</a>
+				<li><a th:href="@{/homeChauffeur(id=${ee.id})}"><span class="nav_icon computer_imac"></span> Dashboard</a>
 				</li>
 				<li><a href="#"><span class="nav_icon frames"></span>ListeVehicule<span class="up_down_arrow">&nbsp;</span></a>
 				<ul class="acitem">
-					<li><a th:href="@{/ChauffeurUser/listeVehiculeParChauffeur(id=${e.id})}"><span class="list-icon">&nbsp;</span>ListeVehicule</a></li>
+					<li><a th:href="@{/ChauffeurUser/listeVehiculeParChauffeur(id=${ee.id})}"><span class="list-icon">&nbsp;</span>ListeVehicule</a></li>
 					
 				</ul>
 				</li>
@@ -18,7 +18,7 @@
 				
 				<li><a href="#"><span class="nav_icon frames"></span>Entretien a venir<span class="up_down_arrow">&nbsp;</span></a>
 				<ul class="acitem">
-					<li><a th:href="@{/ChauffeurUser/listeEntretienParChauffeur(id=${e.id})}"><span class="list-icon">&nbsp;</span>Liste des Entretiens</a></li>
+					<li><a th:href="@{/ChauffeurUser/listeEntretienParChauffeur(id=${ee.id})}"><span class="list-icon">&nbsp;</span>Liste des Entretiens</a></li>
 					
 				</ul>
 				</li>

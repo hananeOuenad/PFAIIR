@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.gfa.dao.ChauffeurRepository;
+import com.gfa.dao.EntretientPrevertifRepository;
 import com.gfa.dao.VehiculeRepository;
 import com.gfa.entities.Chauffeur;
+import com.gfa.entities.EntretientPrevertif;
 import com.gfa.entities.Vehicule;
 
 @Controller
@@ -21,6 +23,8 @@ public class ChauffeurControlleur {
 	private ChauffeurRepository cr;
 	@Autowired
 	private VehiculeRepository vn;
+	@Autowired
+	private EntretientPrevertifRepository en;
 	
 	@RequestMapping(value="/listeVehiculeParChauffeur" , method=RequestMethod.GET)
 	public String Index(Model model, Model model1, @RequestParam(name="id")int id) {
@@ -30,6 +34,24 @@ public class ChauffeurControlleur {
 		model.addAttribute("chauffeur", chauffeur);
 
 				return "ListeVehiculeDeChauffeur";
+	}
+	@RequestMapping(value="/listeEntretienParChauffeur" , method=RequestMethod.GET)
+	public String Entretien(Model model, Model model1, @RequestParam(name="id")int id) {
+		Chauffeur chauffeur=cr.getOne(id);
+		List<Vehicule>vehicules=(List<Vehicule>) chauffeur.getVehicules();
+		for (Vehicule vehicule : vehicules) {
+			List<EntretientPrevertif>entretien= en.findEntretienbyVehicule(vehicule.getId());
+			model.addAttribute("entretien", entretien);
+
+		}
+				
+				
+				
+				
+				
+		model.addAttribute("chauffeur", chauffeur);
+
+				return "ListeEntretienDeChauffeur";
 	}
 	@RequestMapping(value = "/delete_chauffeur", method = RequestMethod.GET)
 	public String DeleteVehicule(@RequestParam(name="id")int id, Model model) {

@@ -28,6 +28,7 @@ public class EntretientPrevertif implements Serializable  {
 	private Date dateEntretient;
 	private int compteurHoraire;
 	private String typeCompteur;
+	private String observation;
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="code_vehicule4") 
 	private Vehicule vehicule4;
@@ -67,21 +68,24 @@ public class EntretientPrevertif implements Serializable  {
 	public void setVehicule(Vehicule vehicule) {
 		this.vehicule4 = vehicule;
 	}
-	public EntretientPrevertif(String titreEntretient, Date dateEntretient, int compteurHoraire, String typeCompteur,
+	public EntretientPrevertif(String titreEntretient, Date dateEntretient, int compteurHoraire, String typeCompteur, String observation,
 			Vehicule vehicule) {
 		super();
 		this.titreEntretient = titreEntretient;
 		this.dateEntretient = dateEntretient;
 		this.compteurHoraire = compteurHoraire;
 		this.typeCompteur = typeCompteur;
+		this.observation=observation;
+
 		this.vehicule4 = vehicule;
 	}
-	public EntretientPrevertif(String titreEntretient, Date dateEntretient, int compteurHoraire, String typeCompteur) {
+	public EntretientPrevertif(String titreEntretient, Date dateEntretient, int compteurHoraire, String typeCompteur, String observation) {
 		super();
 		this.titreEntretient = titreEntretient;
 		this.dateEntretient = dateEntretient;
 		this.compteurHoraire = compteurHoraire;
 		this.typeCompteur = typeCompteur;
+		this.observation=observation;
 	}
 	public EntretientPrevertif() {
 		super();

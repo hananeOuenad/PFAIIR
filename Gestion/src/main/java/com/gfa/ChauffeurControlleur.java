@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.gfa.dao.ChauffeurRepository;
 import com.gfa.dao.EntretientPrevertifRepository;
@@ -18,6 +19,7 @@ import com.gfa.entities.Vehicule;
 
 @Controller
 @RequestMapping(value="/ChauffeurUser")
+@SessionAttributes("chauffeur")
 public class ChauffeurControlleur {
 	@Autowired
 	private ChauffeurRepository cr;
@@ -69,21 +71,19 @@ public class ChauffeurControlleur {
 	
 	@RequestMapping(value="/AjouterObservation" , method=RequestMethod.GET)
 
-	public String AjoutObservation(Chauffeur chauffeur,Model model,Model model1, @RequestParam(name="id")int id) {
+	public String AjoutObservation(Model model, @RequestParam(name="id")int id) {
 		EntretientPrevertif entretien=en.getOne(id);
 		model.addAttribute("entretien", entretien);
-		model.addAttribute("chauffeur", chauffeur);
 
 		return "AjoutObservationEntretien";}
 
 	@RequestMapping(value="/AjoutObservationpourEntretien" , method=RequestMethod.POST)
 
-	public String SaveObservation(Chauffeur chauffeur,Model model,Model model1, @RequestParam(name="id")int id, @RequestParam(name="observation")String observation) {
+	public String SaveObservation(Model model, @RequestParam(name="id")int id, @RequestParam(name="observation")String observation) {
 		EntretientPrevertif entretien=en.getOne(id);
 		entretien.setObservation(observation);
 		en.save(entretien);
 		model.addAttribute("entretien", entretien);
-		model.addAttribute("chauffeur", chauffeur);
 
 		return "ListeEntretienDeChauffeur";}
 

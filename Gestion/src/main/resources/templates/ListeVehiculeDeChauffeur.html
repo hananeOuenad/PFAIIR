@@ -351,8 +351,13 @@
                                              <td th:text="${e.premiereCirculation}"></td>
                                               <td th:text="${e.typeCarburant}"></td>
                                              
-                        <td>    <a th:href="@{/modifier_vehicule(id=${e.id})}" class="btn btn-raised btn-sm">Modifier</a>
-                            <a th:href="@{/delete_vehicule(id=${e.id})}"  class="btn btn-raised btn-sm">Suprimer</a></td>
+                        <td>    
+                       <div class="btn_24_blue">
+								<a th:href="@{/ChauffeurUser/ajoutTrajet(id=${e.id})}"><span>Ajouter trajet</span></a>
+							</div>
+								<div class="btn_24_blue">
+								<a th:href="@{/modifier_vehicule(id=${e.id})}"><span>Voir trajet</span></a>
+							</div></td>
                                         </tr>
 						
 					

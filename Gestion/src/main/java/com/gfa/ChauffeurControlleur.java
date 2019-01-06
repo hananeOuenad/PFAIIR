@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.gfa.dao.ChauffeurRepository;
 import com.gfa.dao.EntretientPrevertifRepository;
+import com.gfa.dao.HistoriqueTrajetRepository;
 import com.gfa.dao.VehiculeRepository;
 import com.gfa.entities.Chauffeur;
 import com.gfa.entities.EntretientPrevertif;
+import com.gfa.entities.HistoriqueTrajet;
 import com.gfa.entities.Vehicule;
 
 @Controller
@@ -27,6 +29,8 @@ public class ChauffeurControlleur {
 	private VehiculeRepository vn;
 	@Autowired
 	private EntretientPrevertifRepository en;
+	@Autowired
+	private HistoriqueTrajetRepository hist;
 	
 	@RequestMapping(value="/listeVehiculeParChauffeur" , method=RequestMethod.GET)
 	public String Index(Model model, Model model1, @RequestParam(name="id")int id) {
@@ -124,8 +128,26 @@ model.addAttribute("vehicule", chauffeurs);
 		model.addAttribute("vehicule", vehicules);
 		return "AjoutChauffeur";}
 
+@RequestMapping(value="/ajoutTrajet" , method=RequestMethod.GET)
+
+public String AjoutTrajet(Model model,Model model1, @RequestParam(name="id")int id) {
+	Vehicule vehicule= vn.getOne(id);
+	model.addAttribute("vehicule", vehicule);
+	model1.addAttribute("historiqueTrajet", new HistoriqueTrajet());
+
+	return "AjoutTrajetVehiculeParChauffeur";}
 
 
+@RequestMapping(value="/SaveTrajet" , method=RequestMethod.POST)
+
+public String SaveTrajet(HistoriqueTrajet ht, Model model, @RequestParam(name="id")int id) {
+		hist.saveAndFlush(ht);
+Vehicule vehicule=vn.getOne(id);
+ht.setVehicule(vehicule);
+hist.save(ht);
+
+model.addAttribute("vehicule", vehicule);
+return "AjoutTrajetVehiculeParChauffeur";}
 }
 
 

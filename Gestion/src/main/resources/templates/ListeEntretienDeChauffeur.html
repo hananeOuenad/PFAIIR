@@ -368,7 +368,9 @@
                                             <td th:text="${e.typeCompteur}"></td>
                                             <td th:text="${e.observation}"></td>
                                              
-                        <td>    <a th:href="@{/ChauffeurUser/AjouterObservation(id=${e.id})}" class="btn btn-raised btn-sm">Ajouter Observation</a>
+                        <td>   
+                        <div class="btn_24_blue"> <a th:href="@{/ChauffeurUser/AjouterObservation(id=${e.id})}" class="btn btn-raised btn-sm">Ajouter Observation</a>
+                        </div>
                                         </tr>
 						
 					

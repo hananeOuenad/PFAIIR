@@ -147,7 +147,10 @@ ht.setVehicule(vehicule);
 hist.save(ht);
 
 model.addAttribute("vehicule", vehicule);
-return "AjoutTrajetVehiculeParChauffeur";}
+return "AjoutTrajetVehiculeParChauffeur";
+}
+
+ 
 }
 
 

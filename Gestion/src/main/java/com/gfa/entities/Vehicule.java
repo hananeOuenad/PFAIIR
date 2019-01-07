@@ -48,8 +48,8 @@ private Collection<Batterie>batteries;
 @OneToMany(mappedBy = "vehicule4")
 @JsonIgnore
 private Collection<EntretientPrevertif>entretientPrevertifs; 
-@OneToMany(mappedBy = "vehicule5")
-@JsonIgnore
+@OneToMany(mappedBy = "vehicule5", fetch = FetchType.EAGER)
+//@JsonIgnore
 private Collection<HistoriqueTrajet>historiqueTrajets; 
 @ManyToMany
 @JoinTable(name="affectation")
@@ -151,6 +151,33 @@ public Vehicule(int matricule, String marque, String genre, double puissance, Da
 }
 public Vehicule() {
 	super();
+}
+public Collection<Pneu> getPneus() {
+	return pneus;
+}
+public void setPneus(Collection<Pneu> pneus) {
+	this.pneus = pneus;
+}
+public Collection<Batterie> getBatteries() {
+	return batteries;
+}
+public void setBatteries(Collection<Batterie> batteries) {
+	this.batteries = batteries;
+}
+public Collection<EntretientPrevertif> getEntretientPrevertifs() {
+	return entretientPrevertifs;
+}
+public void setEntretientPrevertifs(Collection<EntretientPrevertif> entretientPrevertifs) {
+	this.entretientPrevertifs = entretientPrevertifs;
+}
+public Collection<HistoriqueTrajet> getHistoriqueTrajets() {
+	return historiqueTrajets;
+}
+public void setHistoriqueTrajets(Collection<HistoriqueTrajet> historiqueTrajets) {
+	this.historiqueTrajets = historiqueTrajets;
+}
+public static long getSerialversionuid() {
+	return serialVersionUID;
 }
 
 

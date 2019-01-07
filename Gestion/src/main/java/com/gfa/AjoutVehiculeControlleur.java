@@ -24,7 +24,7 @@ public class AjoutVehiculeControlleur {
 	@Autowired
 private VehiculeRepository vr;
 
-	@RequestMapping(value="/list" , method=RequestMethod.GET)
+	@RequestMapping(value="/ListVehicule" , method=RequestMethod.GET)
 	public String Index(Model model) {
 		List<Vehicule>vehicules=vr.findAll();
 		model.addAttribute("vehicule", vehicules);
@@ -75,6 +75,14 @@ model.addAttribute("vehicule", vehicules);
 		
 		model.addAttribute("vehicule", vehicule);
 	    return "ModifierVehicule";
+	}
+	@RequestMapping(value = "/list_trajet", method = RequestMethod.GET)
+	public String ListTrajet(@RequestParam(name="id")int id, Model model) {
+		System.out.println(id);
+	    Vehicule vehicule=vr.getOne(id);
+		
+		model.addAttribute("trajets", vehicule.getHistoriqueTrajets());
+	    return "ListTrajets";
 	}
 	
 	

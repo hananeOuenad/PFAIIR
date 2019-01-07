@@ -113,7 +113,7 @@
 <script src="../../js/custom-scripts.js"></script>
 </head>
 <body id="theme-default" class="full_block">
-	<div th:replace="MenuChauffeur :: menuChauffeur"></div>
+	<div th:replace="MenuAdmin :: menuAdmin"></div>
 	<div id="container">
 		<div id="header" class="blue_lin" th:fragment="headerAdmin">
 			<div class="header_left">
@@ -348,55 +348,63 @@
 					<div class="widget_wrap">
 
 						<div class="widget_content">
-							<h3>Liste des Vehicules</h3>
+							<h3>List des trajets</h3>
 
 							<table class="display data_tbl">
 								<thead>
 									<tr>
-										<th>Id</th>
-										<th>Matricule</th>
-										<th>Marque</th>
-										<th>Genre</th>
-										<th>Puissance</th>
-										<th>Date de la premiere circulation</th>
-										<th>Type du carburant</th>
-										<th>Action</th>
+										<th>date depart</th>
+										<th>date d'arriver</th>
+										<th>ville depart</th>
+										<th>ville d'arriver</th>
 									</tr>
 								</thead>
 								<tbody>
-									<tr th:each="e:${vehicule}">
-										<td th:text="${e.id}"></td>
-										<td th:text="${e.matricule}"></td>
-										<td th:text="${e.marque}"></td>
-										<td th:text="${e.genre}"></td>
-										<td th:text="${e.puissance}"></td>
-										<td th:text="${e.premiereCirculation}"></td>
-										<td th:text="${e.typeCarburant}"></td>
-
-										<td>
-											<div class="btn_24_blue">
-												<a th:href="@{/ChauffeurUser/ajoutTrajet(id=${e.id})}"><span>Ajouter
-														trajet</span></a>
-											</div>
-											<div class="btn_24_blue">
-												<a th:href="@{/Vehicule/list_trajet(id=${e.id})}"><span>Voir
-														trajet</span></a>
-											</div>
-										</td>
+									<tr th:each="e:${trajets}">
+										<td th:text="${e.dateDepart}"></td>
+										<td th:text="${e.dateFin}"></td>
+										<td th:text="${e.lieuDepart}"></td>
+										<td th:text="${e.lieuFin}"></td>
 									</tr>
 								</tbody>
-								<tfoot>
-
-								</tfoot>
 							</table>
+							<div id="googleMap" style="width: 100%; height: 600px;"></div>
 						</div>
 					</div>
 				</div>
-
 			</div>
-
 		</div>
 	</div>
+	<script th:inline="javascript">
+		/*<![CDATA[*/
+			var depart = {lat: +/*[[${trajets[0].lieuDepartLat}]]*/, lng: +/*[[${trajets[0].lieuDepartLng}]]*/};
+			var arrivee= {lat: +/*[[${trajets[0].lieuFinLat}]]*/, lng: +/*[[${trajets[0].lieuFinLng}]]*/};
+			/*]]>*/
+		function myMap() {
+			
+			var mapProp = {
+				center : depart,
+				zoom : 6,
+			};
+			var map = new google.maps.Map(document.getElementById("googleMap"),
+					mapProp);
+			var markerDepart = new google.maps.Marker({
+			    position: depart,
+			    map: map,
+			    icon: 'http://maps.google.com/mapfiles/ms/icons/cabs.png',
+			    title: 'Départ'
+			  });
+			
+			var markerArrivee = new google.maps.Marker({
+			    position: arrivee,
+			    map: map,
+			    icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
+			    title: 'Arrivée'
+			  });
+		}
+	</script>
+	<script
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbLOYWg6PlgbNGB3TrtqQI03HxS-wZ99A&callback=myMap"></script>
 </body>
 
 <!-- Mirrored from www.lab.westilian.com/bingo-admin/invoice.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 16 Dec 2018 22:33:31 GMT -->

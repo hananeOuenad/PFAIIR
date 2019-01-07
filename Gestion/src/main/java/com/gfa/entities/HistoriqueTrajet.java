@@ -26,6 +26,34 @@ public class HistoriqueTrajet implements Serializable {
 	private int id;
 	private Date dateDepart;
 	private String lieuDepart;
+	private String lieuDepartLat;
+	private String lieuDepartLng;
+	private String lieuFinLat;
+	private String lieuFinLng;
+	public String getLieuDepartLat() {
+		return lieuDepartLat;
+	}
+	public void setLieuDepartLat(String lieuDepartLat) {
+		this.lieuDepartLat = lieuDepartLat;
+	}
+	public String getLieuDepartLng() {
+		return lieuDepartLng;
+	}
+	public void setLieuDepartLng(String lieuDepartLng) {
+		this.lieuDepartLng = lieuDepartLng;
+	}
+	public String getLieuFinLat() {
+		return lieuFinLat;
+	}
+	public void setLieuFinLat(String lieuFinLat) {
+		this.lieuFinLat = lieuFinLat;
+	}
+	public String getLieuFinLng() {
+		return lieuFinLng;
+	}
+	public void setLieuFinLng(String lieuFinLng) {
+		this.lieuFinLng = lieuFinLng;
+	}
 	private Date dateFin;
 	private String lieuFin;
 	@ManyToOne(fetch=FetchType.LAZY)

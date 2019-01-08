@@ -69,10 +69,10 @@ public class EntretientPrevertif implements Serializable  {
 	public void setTypeCompteur(String typeCompteur) {
 		this.typeCompteur = typeCompteur;
 	}
-	public Vehicule getVehicule() {
+	public Vehicule getVehicule4() {
 		return vehicule4;
 	}
-	public void setVehicule(Vehicule vehicule) {
+	public void setVehicule4(Vehicule vehicule) {
 		this.vehicule4 = vehicule;
 	}
 	public EntretientPrevertif(String titreEntretient, Date dateEntretient, int compteurHoraire, String typeCompteur, String observation,

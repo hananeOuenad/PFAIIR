@@ -96,10 +96,33 @@
 <script src="../../js/custom-scripts.js"></script>
 </head>
 <body id="theme-default" class="full_block">
-<div  th:replace="MenuAdmin :: menuAdmin">
+<div id="left_bar"  data-th-each="ee : ${chauffeur}">
 	
 	
 	
+		<div id="secondary_nav">
+			<ul id="sidenav" class="accordion_mnu collapsible">
+				<li><a th:href="@{/homeChauffeur(id=${ee.id})}"><span class="nav_icon computer_imac"></span> Dashboard</a>
+				</li>
+				<li><a href="#"><span class="nav_icon frames"></span>ListeVehicule<span class="up_down_arrow">&nbsp;</span></a>
+				<ul class="acitem">
+					<li><a th:href="@{/ChauffeurUser/listeVehiculeParChauffeur(id=${ee.id})}"><span class="list-icon">&nbsp;</span>ListeVehicule</a></li>
+					
+				</ul>
+				</li>
+				
+				
+				
+				
+				<li><a href="#"><span class="nav_icon frames"></span>Entretien a venir<span class="up_down_arrow">&nbsp;</span></a>
+				<ul class="acitem">
+					<li><a th:href="@{/ChauffeurUser/listeEntretienParChauffeur(id=${ee.id})}"><span class="list-icon">&nbsp;</span>Liste des Entretiens</a></li>
+					
+				</ul>
+				</li>
+				
+			</ul>
+		</div>
 	
 </div>
 <div id="container">
@@ -311,47 +334,43 @@
 				<div class="widget_wrap">
 					
 					<div class="widget_content">
-						<h3>Liste des Entretiens</h3>
+						<h3>Liste des Vehicules</h3>
 						
 						<table class="display data_tbl">
 						<thead>
 						<tr>
 							
 							<th>
-								 Titre Entretient
+								 Titre
 							</th>
 							<th>
-								 Date Entretient
+								 Date
 							</th>
 							<th>
-								 Compteur horaire
+								 Compteur Horaire
 							</th>
 							<th>
 								 Type Compteur
 							</th>
 							<th>
-								 Vehicule
+								 Observation
 							</th>
-							
 							<th>
 								 Action
 							</th>
 						</tr>
 						</thead>
 						<tbody>
-							 <tr  th:each="e:${entretientPrevertif}" >
+							 <tr  th:each="e:${entretien}">
                                             <td th:text="${e.titreEntretient}"></td>
                                             <td th:text="${e.dateEntretient}"></td>
                                             <td th:text="${e.compteurHoraire}"></td>
                                             <td th:text="${e.typeCompteur}"></td>
+                                            <td th:text="${e.observation}"></td>
                                              
-                
-           
-                                             <td th:each="test: ${vehicule}" th:text="${test.getMatricule()}" ></td>
-                                              
-                                             
-                        <td>    <a  class="btn btn-raised btn-sm">Modifier</a>
-                            <a   class="btn btn-raised btn-sm">Suprimer</a></td>
+                        <td>   
+                        <div class="btn_24_blue"> <a th:href="@{/ChauffeurUser/AjouterObservation(id=${e.id})}" class="btn btn-raised btn-sm">Ajouter Observation</a>
+                        </div>
                                         </tr>
 						
 					

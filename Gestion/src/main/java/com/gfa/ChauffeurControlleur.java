@@ -1,8 +1,10 @@
 package com.gfa;
 
 import java.util.List;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.MailException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +25,8 @@ import com.gfa.entities.Vehicule;
 @RequestMapping(value="/ChauffeurUser")
 @SessionAttributes("chauffeur")
 public class ChauffeurControlleur {
+    private static Logger log = LoggerFactory.getLogger(ChauffeurControlleur.class);
+
 	@Autowired
 	private ChauffeurRepository cr;
 	@Autowired
@@ -31,6 +35,8 @@ public class ChauffeurControlleur {
 	private EntretientPrevertifRepository en;
 	@Autowired
 	private HistoriqueTrajetRepository hist;
+	@Autowired
+	private NotificationService noti;
 	
 	@RequestMapping(value="/listeVehiculeParChauffeur" , method=RequestMethod.GET)
 	public String Index(Model model, Model model1, @RequestParam(name="id")int id) {
@@ -44,9 +50,19 @@ public class ChauffeurControlleur {
 	@RequestMapping(value="/listeEntretienParChauffeur" , method=RequestMethod.GET)
 	public String Entretien(Model model, Model model1, @RequestParam(name="id")int id) {
 		Chauffeur chauffeur=cr.getOne(id);
+		
 		List<Vehicule>vehicules=(List<Vehicule>) chauffeur.getVehicules();
 		for (Vehicule vehicule : vehicules) {
+			try {
+				noti.setC(vehicule.getMatricule());
+				noti.setA(chauffeur.getNom());
+				noti.SendNotification(chauffeur);
+				}catch(MailException e) {
+					log.info("errrrroooooor"+e.getMessage());
+
+			    }
 			List<EntretientPrevertif>entretien= en.findEntretienbyVehicule(vehicule.getId());
+			
 			model.addAttribute("entretien", entretien);
 
 		}

@@ -4,7 +4,12 @@ import java.util.List;
 
 import javax.websocket.Session;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.MailException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,10 +24,14 @@ import com.gfa.entities.Chauffeur;
 @Controller
 @RequestMapping(value="/")
 public class HomeControlleur {
+    private static Logger log = LoggerFactory.getLogger(HomeControlleur.class);
+
 	@Autowired
 	private ChauffeurRepository cr;
 	@Autowired
 	private AdminRepository ad;
+	@Autowired
+	private NotificationService noti;
 	
 	@RequestMapping(value="/" , method=RequestMethod.GET)
 	public String Index(Model model) {
@@ -32,8 +41,10 @@ public class HomeControlleur {
 	@RequestMapping(value="/homeChauffeur" , method=RequestMethod.GET)
 	public String IndexChauffeur(Model model, @RequestParam(name="id") int id) {
 		Chauffeur chauffeur=cr.getOne(id);
+		
 		model.addAttribute("chauffeur", chauffeur);
 				return "homeChauffeur";
+				
 	}
 	@RequestMapping(value="/login" , method=RequestMethod.POST)
 	public String verifier(Model model, @RequestParam(name="login") String login,@RequestParam(name="mdp") String mdp, @RequestParam(name="role") String role) {
@@ -59,6 +70,7 @@ public class HomeControlleur {
 			
 			Chauffeur chauffeur=cr.findChauffeurbyloginmdp(login, mdp);
 			if(chauffeur !=null) {
+				
 				model.addAttribute("chauffeur", chauffeur);
 
 				return "homeChauffeur";
